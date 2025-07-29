@@ -83,98 +83,47 @@
         </div>
       </nav>
     </header>
+
     <!--=============== MAIN ===============-->
     <main class="main">
       <!--=============== BREADCRUMB ===============-->
       <section class="breadcrumb">
         <ul class="breadcrumb__list flex container">
           <li><a href="index.html" class="breadcrumb__link">Home</a></li>
-          <li><span class="breadcrumb__link"></span>></li>
-          <li><span class="breadcrumb__link">Shop</span></li>
-          <li><span class="breadcrumb__link"></span>></li>
-          <li><span class="breadcrumb__link">Cart</span></li>
+          <li><span class="breadcrumb__link">></span></li>
+          <li><span class="breadcrumb__link">About Us</span></li>
         </ul>
       </section>
+  <section class="third">
+    <div class="container">
+      <div class="left-content">
+        <h2>About Us</h2>
+        <p> KHK Technologies is a trusted name in the field of CCTV surveillance, security solutions, and technical training. Founded with a vision to provide reliable and affordable security systems, we specialize in the installation, sales, and servicing of CCTV cameras for homes, offices, and industries. With a focus on quality, we offer end-to-end solutions using cutting-edge HD and IP surveillance technology to ensure round-the-clock safety for our clients.</p>
+        <p>In addition to security services, KHK Technologies is committed to skill development through its dedicated CCTV Technician Training programs. We empower aspiring professionals with hands-on training, real-time project exposure, and industry-ready certification. Our mission is to blend technology and talent, making every premises smarter and every technician stronger. </p>
+      </div>
+    </div>    <!-- .container -->
+  </section>  <!-- .third -->
 
-      <!--=============== CART ===============-->
-
-
-      <section class="cart section--lg container">
-        <div class="table__container">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
-                <th>Rename</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-
-          </table>
+  
+    <section class="four">
+      <div class="section-title">
+        <h2>Our Team</h2>
+        <p>Meet the leadership guiding KHK Technologies</p>
+      </div>
+      <div class="container">
+        <div class="member">
+          <img src="/assets/img/KHK/image.jpg" alt="photo">
+          <br>
+          <h3>Kathi Hemanth Kumar</h3>
+          <h4>Managing Director</h4>
+          <p></p>
         </div> 
+      </div>     
+    </section> 
 
-        <!-- <div class="cart__actions">
-          <a href="#" class="btn flex btn__md">
-            <i class="fi-rs-shuffle"></i> Update Cart
-          </a>
-          <a href="#" class="btn flex btn__md">
-            <i class="fi-rs-shopping-bag"></i> Continue Shopping
-          </a>
-        </div> -->
-
-        <div class="divider">
-          <i class="fi fi-rs-fingerprint"></i>
-        </div>
-<marquee behavior="scroll" direction="left" scrollamount="5" style="color: red; font-weight: bold;">
-⚙️ Installation Charges Applicable: ₹400 per Camera | Choose "Yes" to include installation in your order summary. | Fast & Secure Service at Your Doorstep!
-</marquee>
-
-<br> <br>
-
-        <div class="cart__group grid">
-          <div>
-          <div class="cart__total">
-            <h3 class="section__title">Cart Totals</h3>
-
-            <div class="installation-option">
-              <label for="installationSelect">Installation Needed?</label>
-              <select id="installationSelect" class="form__input">
-                <option value="no">No</option>
-                <option value="yes">Yes</option>
-              </select>
-            </div>
-
-            <table class="cart__total-table">
-              <tr>
-                <td><span class="cart__total-title">Cart Subtotal</span></td>
-                <td><span class="cart__total-price" id="subtotal">₹0.00</span></td>
-              </tr>
-              <tr id="installRow" style="display: none;">
-                <td><span class="cart__total-title">Installation Charges</span></td>
-                <td><span class="cart__total-price" id="installCharge">₹0.00</span></td>
-              </tr>
-              <tr>
-                <td><span class="cart__total-title">Total</span></td>
-                <td><span class="cart__total-price" id="total">₹0.00</span></td>
-              </tr>
-            </table>
-
-            <a href="checkout.html" class="btn flex btn--md">
-              <i class="fi fi-rs-box-alt"></i> Proceed To Checkout
-            </a>
-          </div>
-        </div>
-      </section>
-
-
-    </main>
 
     <!--=============== FOOTER ===============-->
-    <footer class="footer container">
+    <footer class="footer">
       <div class="footer__container grid">
         <div class="footer__content">
           <a href="index.html" class="footer__logo">
@@ -273,106 +222,5 @@
 
     <!--=============== MAIN JS ===============-->
     <script src="assets/js/main.js"></script>
-
-    
-    <script>
-      window.addEventListener("DOMContentLoaded", () => {
-        const tbody = document.querySelector(".table tbody");
-        const installationSelect = document.getElementById("installationSelect");
-        const installRow = document.getElementById("installRow");
-        const installCharge = document.getElementById("installCharge");
-        const totalDisplay = document.getElementById("total");
-        const subtotalDisplay = document.getElementById("subtotal");
-
-        const installationPerCamera = 400;
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-        function getNumberOfCameras() {
-          let totalCameras = 0;
-          document.querySelectorAll(".table tbody tr").forEach((row) => {
-            const name = row.querySelector(".table__title").textContent.toLowerCase();
-            const qty = parseInt(row.querySelector(".quantity").value) || 0;
-            if (name.includes("camera")) {
-              totalCameras += qty;
-            }
-          });
-          return totalCameras;
-        }
-
-        function calculateTotals() {
-          let subtotal = 0;
-
-          document.querySelectorAll(".table tbody tr").forEach((row) => {
-            const price = parseFloat(row.querySelector(".table__price").textContent.replace("₹", "")) || 0;
-            const qty = parseInt(row.querySelector(".quantity").value) || 1;
-            const rowTotal = price * qty;
-            row.querySelector(".subtotal").textContent = `₹${rowTotal.toFixed(2)}`;
-            subtotal += rowTotal;
-          });
-
-          const cameraCount = getNumberOfCameras();
-          const installCost = (installationSelect.value === "yes") ? cameraCount * installationPerCamera : 0;
-
-          if (installCost > 0) {
-            installRow.style.display = "table-row";
-          } else {
-            installRow.style.display = "none";
-          }
-
-          installCharge.textContent = `₹${installCost.toFixed(2)}`;
-          subtotalDisplay.textContent = `₹${subtotal.toFixed(2)}`;
-          totalDisplay.textContent = `₹${(subtotal + installCost).toFixed(2)}`;
-        }
-
-        function renderCart() {
-          tbody.innerHTML = "";
-          cart.forEach((item, index) => {
-            const tr = document.createElement("tr");
-            tr.innerHTML = `
-              <td><img src="${item.image}" class="table__img" /></td>
-              <td><h3 class="table__title">${item.name}</h3></td>
-              <td><span class="table__price">₹${item.price}</span></td>
-              <td><input type="number" value="${item.quantity || 1}" min="1" class="quantity" data-index="${index}" /></td>
-              <td><span class="subtotal">₹${item.price}</span></td>
-              <td><i class="fi fi-rs-trash table__trash" data-index="${index}"></i></td>
-            `;
-            tbody.appendChild(tr);
-          });
-
-          addEventListeners();
-          calculateTotals();
-        }
-
-        function addEventListeners() {
-          document.querySelectorAll(".quantity").forEach((input) => {
-            input.addEventListener("change", () => {
-              if (parseInt(input.value) < 1) input.value = 1;
-              const index = input.dataset.index;
-              cart[index].quantity = parseInt(input.value);
-              localStorage.setItem("cart", JSON.stringify(cart)); // ✅ Save the new quantity
-              calculateTotals();
-            });
-          });
-
-          document.querySelectorAll(".table__trash").forEach((icon) => {
-            icon.addEventListener("click", () => {
-              const index = icon.dataset.index;
-              cart.splice(index, 1);
-              localStorage.setItem("cart", JSON.stringify(cart));
-              renderCart();
-            });
-          });
-
-          installationSelect.addEventListener("change", calculateTotals);
-        }
-
-        renderCart();
-      });
-    </script>
-
-
-
-
-
   </body>
 </html>
