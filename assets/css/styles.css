@@ -2549,3 +2549,69 @@ contact us */
     padding: 20px;
   }
 }
+
+
+/* 
+projects */
+
+.projects.section {
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+}
+
+.tab__header {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.tab__description {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+.project-title {
+  width: 100%;
+  text-align: left;
+  background: #007bff;
+  color: white;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  transition: background 0.3s ease;
+}
+
+.project-title:hover {
+  background: #0056b3;
+}
+
+.project-details {
+  display: none;
+  background: #f4f4f4;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.slideshow-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.slide {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  display: none;
+  border-radius: 6px;
+}
+
+/* Active slide */
+.slide.active {
+  display: block;
+}
